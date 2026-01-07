@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapidFlow Plumbing - 24/7 Emergency Plumber</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #0052a3;
+            --accent-blue: #e6f2ff;
+            --dark-blue: #003d7a;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --success: #28a745;
+            --warning: #ffc107;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --border-radius: 8px;
+            --border-radius-sm: 6px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark-blue);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        section {
+            padding: 4rem 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-large {
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+        
+        /* Header Styles - Updated without buttons */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: center; /* Center logo */
+            align-items: center;
+            padding: 1rem 1rem;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .logo-tagline {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -5px;
+        }
+        
+        /* Remove nav-buttons CSS since we're removing the buttons */
+        
+        /* Mobile menu toggle - keep for potential future use */
+        .menu-toggle {
+            display: none; /* Hidden since we have no mobile menu */
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 82, 163, 0.9), rgba(0, 102, 204, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%230066cc" fill-opacity="0.1" d="M0,0 L100,0 L100,100 L0,100 Z"/><path fill="none" stroke="%23ffffff" stroke-width="0.5" d="M20,20 L80,20 L80,80 L20,80 Z"/></svg>');
+            background-size: cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero .btn {
+            min-width: 180px;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .badge i {
+            font-size: 1.2rem;
+            color: #4cd964;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--light-gray);
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-blue);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Why Plumbers Section */
+        .why-plumbers {
+            background-color: var(--accent-blue);
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Enhanced Booking Section - GoHighLevel Style */
+        .booking-section {
+            background-color: var(--light-gray);
+        }
+        
+        .booking-container {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-heavy);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .booking-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        
+        .booking-header h2 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        
+        .booking-content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .booking-content {
+                flex-direction: row;
+            }
+        }
+        
+        .calendar-side {
+            flex: 1;
+            padding: 2rem;
+            border-right: 1px solid var(--medium-gray);
+            background-color: #fafafa;
+        }
+        
+        .timeslots-side {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calendar-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .calendar-nav-btn {
+            background: none;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius-sm);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .calendar-nav-btn:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calendar-day-name {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 0.8rem 0;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .calendar-day:hover {
+            background-color: var(--accent-blue);
+        }
+        
+        .calendar-day.selected {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .calendar-day.disabled {
+            color: var(--medium-gray);
+            cursor: not-allowed;
+        }
+        
+        .calendar-day.disabled:hover {
+            background-color: transparent;
+        }
+        
+        .calendar-day.today {
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .timeslot-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeslot-header h3 {
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .selected-date-display {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .timeslots-container {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timeslot {
+            padding: 0.9rem 0.5rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .timeslot:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--primary-blue);
+        }
+        
+        .timeslot.selected {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+        
+        .timeslot.unavailable {
+            background-color: var(--light-gray);
+            color: var(--text-light);
+            cursor: not-allowed;
+            border-color: var(--medium-gray);
+        }
+        
+        .timeslot.unavailable:hover {
+            background-color: var(--light-gray);
+            border-color: var(--medium-gray);
+        }
+        
+        .booking-form-container {
+            display: none;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .booking-form-container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .booking-step {
+            display: none;
+        }
+        
+        .booking-step.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+        
+        .booking-form-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .booking-summary {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-label {
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        
+        .summary-value {
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-heavy);
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: var(--white);
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 3rem 1rem 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .footer-contact {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-phone {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-service-area {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-disclaimer {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            max-width: 800px;
+        }
+        
+        /* Sticky Call Button (Mobile) */
+        .sticky-call-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--success);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .sticky-call-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            /* Hide menu toggle since we removed mobile nav */
+            .menu-toggle {
+                display: none;
+            }
+            
+            .booking-content {
+                flex-direction: column;
+            }
+            
+            .calendar-side {
+                border-right: none;
+                border-bottom: 1px solid var(--medium-gray);
+            }
+            
+            .sticky-call-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .steps-container,
+            .services-grid,
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                gap: 0.3rem;
+            }
+            
+            .calendar-day {
+                padding: 0.6rem 0;
+                font-size: 0.9rem;
+            }
+            
+            .timeslots-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Adjust header for mobile */
+            .header-container {
+                padding: 0.8rem 1rem;
+            }
+            
+            .logo {
+                flex-direction: row;
+                gap: 0.3rem;
+            }
+            
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-tagline {
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+        
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+        
+        .mt-1 {
+            margin-top: 1rem;
+        }
+        
+        .mt-2 {
+            margin-top: 2rem;
+        }
+        
+        .mt-3 {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - Updated without buttons -->
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <div class="logo-icon">🚰</div>
+                <div>
+                    <div class="logo-text">RapidFlow Plumbing</div>
+                    <div class="logo-tagline">24/7 Emergency Plumber</div>
+                </div>
+            </div>
+            
+            <!-- Menu toggle removed since we have no mobile menu -->
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Never Miss Another Plumbing Call</h1>
+            <p>Missed calls automatically turn into booked jobs — even after hours. Our system ensures you never lose a potential customer.</p>
+            
+            <div class="hero-buttons">
+                <a href="tel:+15551234567" class="btn btn-primary btn-large">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <a href="#booking" class="btn btn-secondary btn-large">
+                    <i class="fas fa-calendar"></i> Book Appointment
+                </a>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="badge">
+                    <i class="fas fa-check-circle"></i> Licensed
+                </div>
+                <div class="badge">
+                    <i class="fas fa-shield-alt"></i> Insured
+                </div>
+                <div class="badge">
+                    <i class="fas fa-clock"></i> 24/7 Service
+                </div>
+                <div class="badge">
+                    <i class="fas fa-star"></i> 5-Star Rated
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How Our System Works</h2>
+            <p class="text-center mb-3">Our automated system ensures you never lose a customer, even when you're busy or after hours.</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">📞</div>
+                    <div class="step-number">1</div>
+                    <h3>Customer Calls</h3>
+                    <p>A customer calls your plumbing business but gets no answer (missed call or after hours).</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">📱</div>
+                    <div class="step-number">2</div>
+                    <h3>Auto-Text Sent</h3>
+                    <p>Our system automatically sends a text with a booking link to the customer immediately.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">✅</div>
+                    <div class="step-number">3</div>
+                    <h3>Job Booked</h3>
+                    <p>Customer books an appointment through the link, and your plumber gets notified instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Plumbing Services</h2>
+            <p class="text-center mb-3">Fast, reliable plumbing solutions for residential and commercial customers.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency Plumbing</h3>
+                    <p>24/7 emergency plumbing services for urgent issues like burst pipes, severe leaks, and flooding.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💧</div>
+                    <h3>Leak Repair</h3>
+                    <p>Professional detection and repair of water leaks to prevent damage and save on water bills.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Drain Cleaning</h3>
+                    <p>Clogged drain solutions using advanced equipment for sinks, showers, toilets, and main lines.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Pipe Installation</h3>
+                    <p>Expert pipe installation, replacement, and repair for both residential and commercial properties.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔥</div>
+                    <h3>Water Heater Repair</h3>
+                    <p>Diagnosis, repair, and installation of water heaters to ensure reliable hot water supply.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Plumbers Use This System -->
+    <section class="why-plumbers">
+        <div class="container">
+            <h2 class="section-title">Why Plumbers Love This System</h2>
+            <p class="text-center mb-3">Join hundreds of plumbing businesses that have transformed their operations.</p>
+            
+            <div class="benefits-container">
+                <div class="benefit">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Never Lose Missed Calls</h3>
+                    <p>Turn every missed call into a potential job, even when you're busy on another call or after hours.</p>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Faster Customer Response</h3>
+                    <p>Automated texts go out immediately, engaging customers when they're most likely to book.</p>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">💰</div>
+                    <h3>More Booked Jobs</h3>
+                    <p>Convert more inquiries into actual appointments with our automated follow-up system.</p>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">🤖</div>
+                    <h3>Works 24/7 Automatically</h3>
+                    <p>The system works round the clock, capturing leads even when your office is closed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Booking Section with Calendar UI -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-header">
+                    <h2>Book Your Appointment</h2>
+                    <p>Select a date and time that works best for you</p>
+                </div>
+                
+                <div class="booking-content">
+                    <!-- Calendar Side -->
+                    <div class="calendar-side">
+                        <div class="calendar-header">
+                            <div class="calendar-title" id="currentMonth">June 2023</div>
+                            <div class="calendar-nav">
+                                <button class="calendar-nav-btn" id="prevMonth">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="calendar-nav-btn" id="nextMonth">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendarDays">
+                            <!-- Calendar days will be generated by JavaScript -->
+                        </div>
+                        
+                        <div class="booking-summary" id="bookingSummary" style="display: none;">
+                            <div class="summary-item">
+                                <span class="summary-label">Service:</span>
+                                <span class="summary-value" id="summaryService">Emergency Plumbing</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Date:</span>
+                                <span class="summary-value" id="summaryDate">June 15, 2023</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Time:</span>
+                                <span class="summary-value" id="summaryTime">9:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Time Slots Side -->
+                    <div class="timeslots-side">
+                        <div class="timeslot-header">
+                            <h3>Available Time Slots</h3>
+                            <p class="selected-date-display" id="selectedDateDisplay">Select a date on the calendar</p>
+                        </div>
+                        
+                        <div class="timeslots-container" id="timeslotsContainer">
+                            <!-- Time slots will be generated by JavaScript -->
+                        </div>
+                        
+                        <!-- Booking Form (initially hidden) -->
+                        <div class="booking-form-container" id="bookingFormContainer">
+                            <!-- Step 1: Contact Information -->
+                            <div class="booking-step active" id="step1">
+                                <h3>Contact Information</h3>
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" class="form-control" placeholder="John Smith" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" class="form-control" placeholder="(555) 123-4567" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="serviceType">Service Type *</label>
+                                    <select id="serviceType" class="form-control" required>
+                                        <option value="" disabled selected>Select a service</option>
+                                        <option value="emergency">Emergency Plumbing</option>
+                                        <option value="leak">Leak Repair</option>
+                                        <option value="drain">Drain Cleaning</option>
+                                        <option value="pipe">Pipe Installation</option>
+                                        <option value="heater">Water Heater Repair</option>
+                                        <option value="other">Other Plumbing Issue</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="booking-form-footer">
+                                    <button class="btn btn-secondary" id="cancelBooking">Cancel</button>
+                                    <button class="btn btn-primary" id="nextToStep2">Next</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2: Confirmation -->
+                            <div class="booking-step" id="step2">
+                                <h3>Confirm Your Appointment</h3>
+                                <div class="booking-summary">
+                                    <div class="summary-item">
+                                        <span class="summary-label">Name:</span>
+                                        <span class="summary-value" id="confirmName">John Smith</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Phone:</span>
+                                        <span class="summary-value" id="confirmPhone">(555) 123-4567</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Email:</span>
+                                        <span class="summary-value" id="confirmEmail">john@example.com</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Service:</span>
+                                        <span class="summary-value" id="confirmService">Emergency Plumbing</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Date & Time:</span>
+                                        <span class="summary-value" id="confirmDateTime">June 15, 2023 at 9:00 AM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="notes">Additional Notes (Optional)</label>
+                                    <textarea id="notes" class="form-control" rows="3" placeholder="Please describe your plumbing issue or any special instructions..."></textarea>
+                                </div>
+                                
+                                <div class="booking-form-footer">
+                                    <button class="btn btn-secondary" id="backToStep1">Back</button>
+                                    <button class="btn btn-primary" id="confirmBooking">Confirm Appointment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want This System for Your Plumbing Business?</h2>
+            <p>Stop losing missed calls and start converting them into booked jobs automatically. Join hundreds of plumbers who are already using our system.</p>
+            
+            <a href="https://wa.me/15551234567?text=Hi%2C%20I%20want%20this%20automated%20booking%20%26%20missed-call%20system%20for%20my%20plumbing%20business." target="_blank" class="btn btn-whatsapp btn-large">
+                <i class="fab fa-whatsapp"></i> Get This System
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container container">
+            <div class="footer-logo">RapidFlow Plumbing</div>
+            
+            <div class="footer-contact">
+                <div class="footer-phone">
+                    <a href="tel:+15551234567" style="color: white;">
+                        <i class="fas fa-phone"></i> (555) 123-4567
+                    </a>
+                </div>
+                <div class="footer-service-area">
+                    <i class="fas fa-map-marker-alt"></i> Serving Texas & Nearby Areas
+                </div>
+            </div>
+            
+            <div class="footer-disclaimer">
+                <p><strong>Demo Website:</strong> This is a demonstration website for a plumbing business concept. No real services are being offered. The booking form and phone number are for demonstration purposes only.</p>
+                <p class="mt-1">© 2023 RapidFlow Plumbing Demo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Booking Confirmation -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Appointment Booked!</h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Thank You for Booking!</h3>
+                <p id="modalMessage">Your appointment has been scheduled successfully.</p>
+                <p><strong>This is a demo.</strong> In a real setup, this would instantly book the appointment and send SMS + email confirmations to both you and the plumber.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="closeModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Call Button (Mobile) -->
+    <button class="sticky-call-btn" id="stickyCallBtn">
+        <i class="fas fa-phone"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Scroll to the element
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Sticky call button functionality
+        const stickyCallBtn = document.getElementById('stickyCallBtn');
+        
+        stickyCallBtn.addEventListener('click', function() {
+            window.location.href = 'tel:+15551234567';
+        });
+        
+        // Show/Hide sticky call button based on scroll position
+        window.addEventListener('scroll', function() {
+            // Show sticky button when scrolled down a bit
+            if (window.scrollY > 300) {
+                stickyCallBtn.style.display = 'flex';
+            } else {
+                stickyCallBtn.style.display = 'none';
+            }
+        });
+
+        // -------------------------------------------
+        // Calendar and Booking System JavaScript
+        // -------------------------------------------
+        
+        // Current date for the calendar
+        let currentDate = new Date();
+        let selectedDate = null;
+        let selectedTime = null;
+        let selectedService = null;
+        
+        // Time slots data
+        const timeSlots = [
+            "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", 
+            "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
+            "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM",
+            "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM"
+        ];
+        
+        // Unavailable time slots (for demo purposes)
+        const unavailableSlots = ["10:00 AM", "2:30 PM", "4:00 PM"];
+        
+        // DOM Elements for booking system
+        const currentMonthElement = document.getElementById('currentMonth');
+        const calendarDaysElement = document.getElementById('calendarDays');
+        const prevMonthButton = document.getElementById('prevMonth');
+        const nextMonthButton = document.getElementById('nextMonth');
+        const selectedDateDisplay = document.getElementById('selectedDateDisplay');
+        const timeslotsContainer = document.getElementById('timeslotsContainer');
+        const bookingFormContainer = document.getElementById('bookingFormContainer');
+        const bookingSummary = document.getElementById('bookingSummary');
+        const summaryService = document.getElementById('summaryService');
+        const summaryDate = document.getElementById('summaryDate');
+        const summaryTime = document.getElementById('summaryTime');
+        
+        // Booking form elements
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const cancelBookingButton = document.getElementById('cancelBooking');
+        const nextToStep2Button = document.getElementById('nextToStep2');
+        const backToStep1Button = document.getElementById('backToStep1');
+        const confirmBookingButton = document.getElementById('confirmBooking');
+        
+        // Confirmation modal elements
+        const confirmationModal = document.getElementById('confirmationModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalButton = document.getElementById('closeModal');
+        
+        // Form input elements
+        const nameInput = document.getElementById('name');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const serviceTypeSelect = document.getElementById('serviceType');
+        
+        // Confirmation display elements
+        const confirmName = document.getElementById('confirmName');
+        const confirmPhone = document.getElementById('confirmPhone');
+        const confirmEmail = document.getElementById('confirmEmail');
+        const confirmService = document.getElementById('confirmService');
+        const confirmDateTime = document.getElementById('confirmDateTime');
+        
+        // Initialize the calendar
+        function initCalendar() {
+            renderCalendar();
+            generateTimeSlots();
+            
+            // Set today as selected by default
+            const today = new Date();
+            selectDate(today);
+        }
+        
+        // Render the calendar for the current month
+        function renderCalendar() {
+            // Clear existing calendar days
+            calendarDaysElement.innerHTML = '';
+            
+            // Set current month display
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            currentMonthElement.textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            // Get first day of month and total days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const totalDays = lastDay.getDate();
+            const firstDayIndex = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
+            
+            // Add day names header
+            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            dayNames.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day-name';
+                dayElement.textContent = day;
+                calendarDaysElement.appendChild(dayElement);
+            });
+            
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyElement = document.createElement('div');
+                emptyElement.className = 'calendar-day disabled';
+                calendarDaysElement.appendChild(emptyElement);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            const isCurrentMonth = today.getMonth() === currentDate.getMonth() && 
+                                   today.getFullYear() === currentDate.getFullYear();
+            
+            for (let day = 1; day <= totalDays; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                // Check if this is today
+                if (isCurrentMonth && day === today.getDate()) {
+                    dayElement.classList.add('today');
+                }
+                
+                // Check if this day is selected
+                if (selectedDate && 
+                    selectedDate.getDate() === day && 
+                    selectedDate.getMonth() === currentDate.getMonth() &&
+                    selectedDate.getFullYear() === currentDate.getFullYear()) {
+                    dayElement.classList.add('selected');
+                }
+                
+                // Add click event
+                dayElement.addEventListener('click', () => {
+                    const selectedDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                    selectDate(selectedDay);
+                });
+                
+                calendarDaysElement.appendChild(dayElement);
+            }
+        }
+        
+        // Generate time slots for the selected date
+        function generateTimeSlots() {
+            timeslotsContainer.innerHTML = '';
+            
+            if (!selectedDate) {
+                selectedDateDisplay.textContent = 'Select a date on the calendar';
+                return;
+            }
+            
+            // Format the selected date for display
+            const dateOptions = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+            selectedDateDisplay.textContent = selectedDate.toLocaleDateString('en-US', dateOptions);
+            
+            // Create time slots
+            timeSlots.forEach(time => {
+                const timeElement = document.createElement('div');
+                timeElement.className = 'timeslot';
+                
+                // Check if this time slot is unavailable
+                if (unavailableSlots.includes(time)) {
+                    timeElement.classList.add('unavailable');
+                    timeElement.innerHTML = `${time} <br><small>Booked</small>`;
+                } else {
+                    timeElement.textContent = time;
+                    
+                    // Check if this time slot is selected
+                    if (selectedTime === time) {
+                        timeElement.classList.add('selected');
+                    }
+                    
+                    // Add click event for available slots
+                    timeElement.addEventListener('click', () => {
+                        if (!timeElement.classList.contains('unavailable')) {
+                            // Remove selection from all time slots
+                            document.querySelectorAll('.timeslot').forEach(slot => {
+                                slot.classList.remove('selected');
+                            });
+                            
+                            // Select this time slot
+                            timeElement.classList.add('selected');
+                            selectTime(time);
+                        }
+                    });
+                }
+                
+                timeslotsContainer.appendChild(timeElement);
+            });
+        }
+        
+        // Select a date on the calendar
+        function selectDate(date) {
+            selectedDate = date;
+            
+            // Update calendar UI
+            renderCalendar();
+            
+            // Generate time slots for the selected date
+            generateTimeSlots();
+            
+            // Hide booking form if it's visible
+            bookingFormContainer.classList.remove('active');
+            
+            // Show booking summary if we have all needed info
+            updateBookingSummary();
+        }
+        
+        // Select a time slot
+        function selectTime(time) {
+            selectedTime = time;
+            
+            // Show booking form
+            bookingFormContainer.classList.add('active');
+            
+            // Reset to step 1
+            step1.classList.add('active');
+            step2.classList.remove('active');
+            
+            // Update booking summary
+            updateBookingSummary();
+        }
+        
+        // Update the booking summary display
+        function updateBookingSummary() {
+            if (selectedDate && selectedTime) {
+                // Show the booking summary
+                bookingSummary.style.display = 'block';
+                
+                // Format the date
+                const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+                const formattedDate = selectedDate.toLocaleDateString('en-US', dateOptions);
+                
+                // Update summary text
+                summaryDate.textContent = formattedDate;
+                summaryTime.textContent = selectedTime;
+                
+                // Update service if selected
+                if (selectedService) {
+                    summaryService.textContent = getServiceName(selectedService);
+                }
+            } else {
+                // Hide the booking summary
+                bookingSummary.style.display = 'none';
+            }
+        }
+        
+        // Get service name from value
+        function getServiceName(serviceValue) {
+            const serviceNames = {
+                'emergency': 'Emergency Plumbing',
+                'leak': 'Leak Repair',
+                'drain': 'Drain Cleaning',
+                'pipe': 'Pipe Installation',
+                'heater': 'Water Heater Repair',
+                'other': 'Other Plumbing Issue'
+            };
+            
+            return serviceNames[serviceValue] || 'Plumbing Service';
+        }
+        
+        // Event listeners for calendar navigation
+        prevMonthButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        
+        nextMonthButton.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+        
+        // Booking form navigation
+        cancelBookingButton.addEventListener('click', () => {
+            // Reset selection
+            selectedTime = null;
+            
+            // Update UI
+            document.querySelectorAll('.timeslot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            
+            // Hide booking form
+            bookingFormContainer.classList.remove('active');
+            
+            // Update booking summary
+            updateBookingSummary();
+        });
+        
+        nextToStep2Button.addEventListener('click', () => {
+            // Validate form
+            if (!nameInput.value.trim()) {
+                alert('Please enter your name');
+                nameInput.focus();
+                return;
+            }
+            
+            if (!phoneInput.value.trim()) {
+                alert('Please enter your phone number');
+                phoneInput.focus();
+                return;
+            }
+            
+            if (!emailInput.value.trim()) {
+                alert('Please enter your email address');
+                emailInput.focus();
+                return;
+            }
+            
+            if (!serviceTypeSelect.value) {
+                alert('Please select a service type');
+                serviceTypeSelect.focus();
+                return;
+            }
+            
+            // Save selected service
+            selectedService = serviceTypeSelect.value;
+            updateBookingSummary();
+            
+            // Update confirmation display
+            confirmName.textContent = nameInput.value;
+            confirmPhone.textContent = phoneInput.value;
+            confirmEmail.textContent = emailInput.value;
+            confirmService.textContent = getServiceName(selectedService);
+            
+            // Format the date and time for confirmation
+            const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+            const formattedDate = selectedDate.toLocaleDateString('en-US', dateOptions);
+            confirmDateTime.textContent = `${formattedDate} at ${selectedTime}`;
+            
+            // Switch to step 2
+            step1.classList.remove('active');
+            step2.classList.add('active');
+        });
+        
+        backToStep1Button.addEventListener('click', () => {
+            // Switch back to step 1
+            step2.classList.remove('active');
+            step1.classList.add('active');
+        });
+        
+        confirmBookingButton.addEventListener('click', () => {
+            // Show confirmation modal
+            const dateOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+            const formattedDate = selectedDate.toLocaleDateString('en-US', dateOptions);
+            
+            modalMessage.textContent = `Your ${getServiceName(selectedService)} appointment is scheduled for ${formattedDate} at ${selectedTime}.`;
+            confirmationModal.classList.add('active');
+            
+            // Reset form for next booking
+            setTimeout(() => {
+                resetBookingForm();
+            }, 100);
+        });
+        
+        // Close modal
+        closeModalButton.addEventListener('click', () => {
+            confirmationModal.classList.remove('active');
+        });
+        
+        // Close modal when clicking outside
+        confirmationModal.addEventListener('click', (e) => {
+            if (e.target === confirmationModal) {
+                confirmationModal.classList.remove('active');
+            }
+        });
+        
+        // Reset booking form
+        function resetBookingForm() {
+            // Reset form inputs
+            nameInput.value = '';
+            phoneInput.value = '';
+            emailInput.value = '';
+            serviceTypeSelect.value = '';
+            document.getElementById('notes').value = '';
+            
+            // Reset selections
+            selectedTime = null;
+            selectedService = null;
+            
+            // Reset UI
+            document.querySelectorAll('.timeslot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            
+            bookingFormContainer.classList.remove('active');
+            step2.classList.remove('active');
+            step1.classList.add('active');
+            
+            // Update booking summary
+            updateBookingSummary();
+        }
+        
+        // Service type change handler
+        serviceTypeSelect.addEventListener('change', () => {
+            selectedService = serviceTypeSelect.value;
+            updateBookingSummary();
+        });
+        
+        // Initialize the booking system
+        initCalendar();
+    </script>
+</body>
+</html>
