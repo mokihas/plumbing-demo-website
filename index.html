@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RapidFlow Plumbing - 24/7 Emergency Plumber</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Reset & Base Styles */
         * {
@@ -15,48 +15,67 @@
         }
         
         :root {
-            --primary-blue: #0066cc;
-            --secondary-blue: #0052a3;
-            --accent-blue: #e6f2ff;
-            --dark-blue: #003d7a;
-            --text-dark: #333333;
+            --primary-blue: #0066ff;
+            --secondary-blue: #0052cc;
+            --accent-blue: #1a8cff;
+            --dark-blue: #003d99;
+            --navy-blue: #002966;
+            --light-blue: #e6f2ff;
+            --gradient-blue: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            --gradient-dark: linear-gradient(135deg, #003d99 0%, #002966 100%);
+            --gradient-light: linear-gradient(135deg, #e6f2ff 0%, #ffffff 100%);
+            --text-dark: #1a1a1a;
             --text-light: #666666;
             --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --medium-gray: #e0e0e0;
-            --success: #28a745;
-            --warning: #ffc107;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.12);
-            --border-radius: 8px;
-            --border-radius-sm: 6px;
-            --transition: all 0.3s ease;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --card-shadow: 0 10px 30px rgba(0, 51, 153, 0.1);
+            --shadow-heavy: 0 20px 50px rgba(0, 51, 153, 0.15);
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
             line-height: 1.6;
             color: var(--text-dark);
             background-color: var(--white);
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
+            font-weight: 700;
+            line-height: 1.2;
             margin-bottom: 1rem;
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
             color: var(--dark-blue);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-blue);
+            border-radius: 2px;
         }
         
         h3 {
@@ -64,8 +83,9 @@
         }
         
         p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--text-light);
+            line-height: 1.7;
         }
         
         a {
@@ -79,39 +99,36 @@
         
         img {
             max-width: 100%;
+            height: auto;
         }
         
         section {
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
         
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
+        .text-center {
+            text-align: center;
         }
         
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
+        .text-center h2:after {
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-blue);
-            border-radius: 2px;
         }
         
+        /* Button Styles */
         .btn {
-            display: inline-block;
-            padding: 0.9rem 1.8rem;
-            border-radius: var(--border-radius);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-sm);
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
@@ -119,17 +136,36 @@
             transition: var(--transition);
             text-align: center;
             font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn:hover:before {
+            left: 100%;
         }
         
         .btn-primary {
-            background-color: var(--primary-blue);
+            background: var(--gradient-blue);
             color: var(--white);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
         }
         
         .btn-primary:hover {
-            background-color: var(--secondary-blue);
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
         }
         
         .btn-secondary {
@@ -139,29 +175,33 @@
         }
         
         .btn-secondary:hover {
-            background-color: var(--accent-blue);
+            background-color: var(--light-blue);
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: 0 6px 15px rgba(0, 102, 255, 0.2);
         }
         
         .btn-large {
-            padding: 1.2rem 2.5rem;
+            padding: 1.2rem 2.8rem;
             font-size: 1.1rem;
         }
         
         .btn-whatsapp {
             background-color: #25D366;
             color: white;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
         
         .btn-whatsapp:hover {
             background-color: #1da851;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
         
-        /* Header Styles - Updated without buttons */
+        /* Header Styles */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 51, 153, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -169,105 +209,231 @@
         
         .header-container {
             display: flex;
-            justify-content: center; /* Center logo */
+            justify-content: space-between;
             align-items: center;
-            padding: 1rem 1rem;
-            position: relative;
+            padding: 1.2rem 1.5rem;
         }
         
+        /* Modern Logo */
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            text-align: center;
+            gap: 12px;
         }
         
         .logo-icon {
-            font-size: 2rem;
-            color: var(--primary-blue);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.25);
+        }
+        
+        .logo-icon i {
+            font-size: 1.8rem;
+            color: white;
         }
         
         .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
         }
         
         .logo-tagline {
             font-size: 0.8rem;
+            font-weight: 500;
             color: var(--text-light);
-            margin-top: -5px;
-        }
-        
-        /* Remove nav-buttons CSS since we're removing the buttons */
-        
-        /* Mobile menu toggle - keep for potential future use */
-        .menu-toggle {
-            display: none; /* Hidden since we have no mobile menu */
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 2px;
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 82, 163, 0.9), rgba(0, 102, 204, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%230066cc" fill-opacity="0.1" d="M0,0 L100,0 L100,100 L0,100 Z"/><path fill="none" stroke="%23ffffff" stroke-width="0.5" d="M20,20 L80,20 L80,80 L20,80 Z"/></svg>');
-            background-size: cover;
-            color: var(--white);
-            text-align: center;
+            background: var(--gradient-light);
+            position: relative;
+            overflow: hidden;
             padding: 6rem 1rem;
         }
         
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23e6f2ff" d="M0,0 L100,0 L100,100 L0,100 Z"/><path fill="none" stroke="%230066ff" stroke-width="0.5" opacity="0.1" d="M0,0 L100,100 M0,20 L100,120 M0,40 L100,140 M0,60 L100,160 M0,80 L100,180 M20,0 L120,100 M40,0 L140,100 M60,0 L160,100 M80,0 L180,100"/></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
         .hero h1 {
-            font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: var(--white);
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            color: var(--text-light);
         }
         
         .hero-buttons {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
         
-        .hero .btn {
-            min-width: 180px;
+        .hero-visual {
+            position: relative;
+            z-index: 2;
         }
         
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .hero-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-heavy);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient-blue);
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
         .badge {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 10px;
             font-weight: 500;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         
         .badge i {
             font-size: 1.2rem;
-            color: #4cd964;
+            color: var(--primary-blue);
+        }
+        
+        /* Tile/Card Grid Styles */
+        .tile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tile-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid var(--medium-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tile-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--primary-blue);
+        }
+        
+        .tile-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-blue);
+        }
+        
+        .tile-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         /* How It Works Section */
         .how-it-works {
             background-color: var(--light-gray);
+            position: relative;
         }
         
         .steps-container {
@@ -280,87 +446,123 @@
         .step {
             background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
+            text-align: center;
+            position: relative;
         }
         
         .step:hover {
             transform: translateY(-10px);
-        }
-        
-        .step-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-blue);
+            box-shadow: var(--shadow-heavy);
         }
         
         .step-number {
-            display: inline-block;
-            background-color: var(--primary-blue);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-blue);
             color: var(--white);
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
             border-radius: 50%;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
         }
         
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
         }
         
         .service-card {
             background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary-blue);
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
             transition: var(--transition);
+            border: 1px solid var(--medium-gray);
+            position: relative;
+            overflow: hidden;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--primary-blue);
+        }
+        
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-blue);
         }
         
         .service-icon {
             font-size: 2.5rem;
-            color: var(--primary-blue);
             margin-bottom: 1.5rem;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         /* Why Plumbers Section */
         .why-plumbers {
-            background-color: var(--accent-blue);
+            background: var(--gradient-light);
+            position: relative;
         }
         
         .benefits-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
         
         .benefit {
             background-color: var(--white);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+        
+        .benefit:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-blue);
         }
         
         .benefit-icon {
             font-size: 2.5rem;
-            color: var(--primary-blue);
             margin-bottom: 1.5rem;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
-        /* Enhanced Booking Section - GoHighLevel Style */
+        /* Enhanced Booking Section */
         .booking-section {
             background-color: var(--light-gray);
         }
@@ -372,18 +574,25 @@
             box-shadow: var(--shadow-heavy);
             max-width: 1000px;
             margin: 0 auto;
+            border: 1px solid var(--medium-gray);
         }
         
         .booking-header {
-            background-color: var(--primary-blue);
+            background: var(--gradient-blue);
             color: var(--white);
-            padding: 1.5rem 2rem;
+            padding: 2rem;
             text-align: center;
         }
         
         .booking-header h2 {
             color: var(--white);
             margin-bottom: 0.5rem;
+        }
+        
+        .booking-header h2:after {
+            background: var(--white);
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .booking-content {
@@ -433,17 +642,19 @@
             background: none;
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius-sm);
-            width: 2rem;
-            height: 2rem;
+            width: 2.2rem;
+            height: 2.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
+            background: white;
         }
         
         .calendar-nav-btn:hover {
-            background-color: var(--accent-blue);
+            background-color: var(--light-blue);
+            border-color: var(--primary-blue);
         }
         
         .calendar-grid {
@@ -457,35 +668,41 @@
             text-align: center;
             font-weight: 600;
             color: var(--text-light);
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             font-size: 0.9rem;
         }
         
         .calendar-day {
             text-align: center;
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             border-radius: var(--border-radius-sm);
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
+            background: white;
+            border: 1px solid transparent;
         }
         
         .calendar-day:hover {
-            background-color: var(--accent-blue);
+            background-color: var(--light-blue);
+            border-color: var(--primary-blue);
         }
         
         .calendar-day.selected {
-            background-color: var(--primary-blue);
+            background: var(--gradient-blue);
             color: var(--white);
+            border-color: var(--primary-blue);
         }
         
         .calendar-day.disabled {
             color: var(--medium-gray);
             cursor: not-allowed;
+            background: #f5f5f5;
         }
         
         .calendar-day.disabled:hover {
-            background-color: transparent;
+            background-color: #f5f5f5;
+            border-color: transparent;
         }
         
         .calendar-day.today {
@@ -515,35 +732,36 @@
         }
         
         .timeslot {
-            padding: 0.9rem 0.5rem;
+            padding: 1rem 0.5rem;
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius-sm);
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
+            background: white;
         }
         
         .timeslot:hover {
-            background-color: var(--accent-blue);
+            background-color: var(--light-blue);
             border-color: var(--primary-blue);
         }
         
         .timeslot.selected {
-            background-color: var(--primary-blue);
+            background: var(--gradient-blue);
             color: var(--white);
             border-color: var(--primary-blue);
         }
         
         .timeslot.unavailable {
-            background-color: var(--light-gray);
+            background-color: #f5f5f5;
             color: var(--text-light);
             cursor: not-allowed;
             border-color: var(--medium-gray);
         }
         
         .timeslot.unavailable:hover {
-            background-color: var(--light-gray);
+            background-color: #f5f5f5;
             border-color: var(--medium-gray);
         }
         
@@ -581,18 +799,19 @@
         
         .form-control {
             width: 100%;
-            padding: 0.9rem 1rem;
+            padding: 1rem;
             border: 1px solid var(--medium-gray);
             border-radius: var(--border-radius-sm);
             font-size: 1rem;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             transition: var(--transition);
+            background: white;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
         }
         
         .booking-form-footer {
@@ -602,7 +821,7 @@
         }
         
         .booking-summary {
-            background-color: #f9f9f9;
+            background-color: var(--light-blue);
             border-radius: var(--border-radius-sm);
             padding: 1.5rem;
             margin-bottom: 1.5rem;
@@ -655,25 +874,28 @@
         }
         
         .modal-header {
-            background-color: var(--primary-blue);
+            background: var(--gradient-blue);
             color: var(--white);
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .modal-body {
             padding: 2rem;
             text-align: center;
         }
         
+        .modal-body {
+            padding: 2.5rem;
+            text-align: center;
+        }
+        
         .modal-icon {
-            font-size: 3rem;
-            color: var(--success);
+            font-size: 4rem;
+            background: linear-gradient(90deg, #25D366, #4cd964);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 1.5rem;
         }
         
         .modal-footer {
-            padding: 1.5rem;
+            padding: 1.5rem 2.5rem;
             text-align: center;
             border-top: 1px solid var(--medium-gray);
         }
@@ -681,12 +903,31 @@
         /* CTA Section */
         .cta-section {
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            background: var(--gradient-dark);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="30" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
         }
         
         .cta-section h2 {
             color: var(--white);
+        }
+        
+        .cta-section h2:after {
+            background: var(--white);
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .cta-section p {
@@ -697,9 +938,10 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark-blue);
+            background-color: var(--navy-blue);
             color: var(--white);
-            padding: 3rem 1rem 2rem;
+            padding: 4rem 1rem 2rem;
+            position: relative;
         }
         
         .footer-container {
@@ -710,25 +952,38 @@
         }
         
         .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            color: var(--white);
+            background: linear-gradient(90deg, #fff, #e6f2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .footer-contact {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .footer-phone {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+        }
+        
+        .footer-phone a {
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .footer-phone a:hover {
+            color: var(--light-blue);
         }
         
         .footer-service-area {
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
         
         .footer-disclaimer {
@@ -744,14 +999,14 @@
         .sticky-call-btn {
             display: none;
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
-            background-color: var(--success);
+            background: var(--gradient-blue);
             color: var(--white);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
             z-index: 999;
             border: none;
             font-size: 1.8rem;
@@ -761,6 +1016,7 @@
         
         .sticky-call-btn:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.5);
         }
         
         /* Animations */
@@ -781,29 +1037,40 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.8rem;
             }
             
             h2 {
-                font-size: 1.7rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-visual {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            h2 {
+                font-size: 1.9rem;
             }
             
             section {
-                padding: 3rem 1rem;
+                padding: 4rem 1rem;
             }
             
             .hero {
                 padding: 4rem 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
             }
             
             .hero-buttons {
@@ -816,9 +1083,12 @@
                 max-width: 300px;
             }
             
-            /* Hide menu toggle since we removed mobile nav */
-            .menu-toggle {
-                display: none;
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .trust-badges {
+                justify-content: center;
             }
             
             .booking-content {
@@ -839,22 +1109,27 @@
         
         @media (max-width: 480px) {
             h1 {
-                font-size: 1.7rem;
+                font-size: 2rem;
             }
             
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
             
             .hero h1 {
-                font-size: 1.7rem;
+                font-size: 1.9rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
             
             .trust-badges {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: center;
             }
             
+            .tile-grid,
             .steps-container,
             .services-grid,
             .benefits-container {
@@ -866,7 +1141,7 @@
             }
             
             .calendar-day {
-                padding: 0.6rem 0;
+                padding: 0.8rem 0;
                 font-size: 0.9rem;
             }
             
@@ -874,34 +1149,21 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            /* Adjust header for mobile */
             .header-container {
-                padding: 0.8rem 1rem;
-            }
-            
-            .logo {
-                flex-direction: row;
-                gap: 0.3rem;
+                padding: 1rem;
             }
             
             .logo-icon {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .logo-main {
                 font-size: 1.5rem;
-            }
-            
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            
-            .logo-tagline {
-                font-size: 0.7rem;
             }
         }
         
         /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-        
         .mb-1 {
             margin-bottom: 1rem;
         }
@@ -928,48 +1190,66 @@
     </style>
 </head>
 <body>
-    <!-- Header - Updated without buttons -->
+    <!-- Header -->
     <header>
         <div class="header-container container">
             <div class="logo">
-                <div class="logo-icon">🚰</div>
-                <div>
-                    <div class="logo-text">RapidFlow Plumbing</div>
-                    <div class="logo-tagline">24/7 Emergency Plumber</div>
+                <div class="logo-icon">
+                    <i class="fas fa-faucet"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-main">RapidFlow</div>
+                    <div class="logo-tagline">24/7 EMERGENCY PLUMBER</div>
                 </div>
             </div>
-            
-            <!-- Menu toggle removed since we have no mobile menu -->
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>Never Miss Another Plumbing Call</h1>
-            <p>Missed calls automatically turn into booked jobs — even after hours. Our system ensures you never lose a potential customer.</p>
-            
-            <div class="hero-buttons">
-                <a href="tel:+15551234567" class="btn btn-primary btn-large">
-                    <i class="fas fa-phone"></i> Call Now
-                </a>
-                <a href="#booking" class="btn btn-secondary btn-large">
-                    <i class="fas fa-calendar"></i> Book Appointment
-                </a>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Never Miss Another Plumbing Call</h1>
+                <p>Missed calls automatically turn into booked jobs — even after hours. Our system ensures you never lose a potential customer.</p>
+                
+                <div class="hero-buttons">
+                    <a href="tel:+15551234567" class="btn btn-primary btn-large">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="#booking" class="btn btn-secondary btn-large">
+                        <i class="fas fa-calendar"></i> Book Appointment
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Emergency Service</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Min Response</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
             </div>
             
-            <div class="trust-badges">
-                <div class="badge">
-                    <i class="fas fa-check-circle"></i> Licensed
-                </div>
-                <div class="badge">
-                    <i class="fas fa-shield-alt"></i> Insured
-                </div>
-                <div class="badge">
-                    <i class="fas fa-clock"></i> 24/7 Service
-                </div>
-                <div class="badge">
-                    <i class="fas fa-star"></i> 5-Star Rated
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <h3>Book Your Plumbing Service</h3>
+                    <p>Schedule emergency or routine plumbing services with our easy online booking system.</p>
+                    
+                    <div class="trust-badges">
+                        <div class="badge">
+                            <i class="fas fa-check-circle"></i> Licensed & Insured
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-star"></i> 5-Star Rated
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -978,26 +1258,23 @@
     <!-- How It Works -->
     <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">How Our System Works</h2>
+            <h2 class="text-center">How Our System Works</h2>
             <p class="text-center mb-3">Our automated system ensures you never lose a customer, even when you're busy or after hours.</p>
             
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-icon">📞</div>
+            <div class="tile-grid">
+                <div class="tile-card">
                     <div class="step-number">1</div>
                     <h3>Customer Calls</h3>
                     <p>A customer calls your plumbing business but gets no answer (missed call or after hours).</p>
                 </div>
                 
-                <div class="step">
-                    <div class="step-icon">📱</div>
+                <div class="tile-card">
                     <div class="step-number">2</div>
                     <h3>Auto-Text Sent</h3>
                     <p>Our system automatically sends a text with a booking link to the customer immediately.</p>
                 </div>
                 
-                <div class="step">
-                    <div class="step-icon">✅</div>
+                <div class="tile-card">
                     <div class="step-number">3</div>
                     <h3>Job Booked</h3>
                     <p>Customer books an appointment through the link, and your plumber gets notified instantly.</p>
@@ -1009,38 +1286,44 @@
     <!-- Services -->
     <section class="services">
         <div class="container">
-            <h2 class="section-title">Our Plumbing Services</h2>
+            <h2 class="text-center">Our Plumbing Services</h2>
             <p class="text-center mb-3">Fast, reliable plumbing solutions for residential and commercial customers.</p>
             
-            <div class="services-grid">
+            <div class="tile-grid">
                 <div class="service-card">
-                    <div class="service-icon">🚨</div>
+                    <div class="service-icon"><i class="fas fa-exclamation-triangle"></i></div>
                     <h3>Emergency Plumbing</h3>
                     <p>24/7 emergency plumbing services for urgent issues like burst pipes, severe leaks, and flooding.</p>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">💧</div>
+                    <div class="service-icon"><i class="fas fa-tint"></i></div>
                     <h3>Leak Repair</h3>
                     <p>Professional detection and repair of water leaks to prevent damage and save on water bills.</p>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">🔄</div>
+                    <div class="service-icon"><i class="fas fa-shower"></i></div>
                     <h3>Drain Cleaning</h3>
                     <p>Clogged drain solutions using advanced equipment for sinks, showers, toilets, and main lines.</p>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">🔧</div>
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
                     <h3>Pipe Installation</h3>
                     <p>Expert pipe installation, replacement, and repair for both residential and commercial properties.</p>
                 </div>
                 
                 <div class="service-card">
-                    <div class="service-icon">🔥</div>
+                    <div class="service-icon"><i class="fas fa-fire"></i></div>
                     <h3>Water Heater Repair</h3>
                     <p>Diagnosis, repair, and installation of water heaters to ensure reliable hot water supply.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3>Plumbing Inspection</h3>
+                    <p>Comprehensive plumbing system inspections to identify potential issues before they become emergencies.</p>
                 </div>
             </div>
         </div>
@@ -1049,30 +1332,30 @@
     <!-- Why Plumbers Use This System -->
     <section class="why-plumbers">
         <div class="container">
-            <h2 class="section-title">Why Plumbers Love This System</h2>
+            <h2 class="text-center">Why Plumbers Love This System</h2>
             <p class="text-center mb-3">Join hundreds of plumbing businesses that have transformed their operations.</p>
             
-            <div class="benefits-container">
+            <div class="tile-grid">
                 <div class="benefit">
-                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Never Lose Missed Calls</h3>
                     <p>Turn every missed call into a potential job, even when you're busy on another call or after hours.</p>
                 </div>
                 
                 <div class="benefit">
-                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
                     <h3>Faster Customer Response</h3>
                     <p>Automated texts go out immediately, engaging customers when they're most likely to book.</p>
                 </div>
                 
                 <div class="benefit">
-                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-icon"><i class="fas fa-money-bill-wave"></i></div>
                     <h3>More Booked Jobs</h3>
                     <p>Convert more inquiries into actual appointments with our automated follow-up system.</p>
                 </div>
                 
                 <div class="benefit">
-                    <div class="benefit-icon">🤖</div>
+                    <div class="benefit-icon"><i class="fas fa-robot"></i></div>
                     <h3>Works 24/7 Automatically</h3>
                     <p>The system works round the clock, capturing leads even when your office is closed.</p>
                 </div>
@@ -1236,7 +1519,7 @@
             
             <div class="footer-contact">
                 <div class="footer-phone">
-                    <a href="tel:+15551234567" style="color: white;">
+                    <a href="tel:+15551234567">
                         <i class="fas fa-phone"></i> (555) 123-4567
                     </a>
                 </div>
