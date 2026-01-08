@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RapidFlow Plumbing - Missed Calls Turn Into Booked Jobs Automatically</title>
+    <title>RapidFlow Plumbing - Missed Calls Automatically Turn Into Booked Jobs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -307,7 +307,33 @@
         .hero-buttons {
             display: flex;
             gap: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* FIX 2: Visual Flow Strip */
+        .flow-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0 3rem;
+            padding: 1.2rem;
+            background: rgba(0, 102, 255, 0.05);
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+        }
+        
+        .flow-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .flow-arrow {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
         }
         
         .hero-visual {
@@ -562,7 +588,20 @@
             color: transparent;
         }
         
-        /* Booking Info Bar - FIX 2 */
+        /* FIX 3: Booking Section Micro-Copy */
+        .booking-micro-copy {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            padding: 0 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Booking Info Bar */
         .booking-info-bar {
             background: linear-gradient(90deg, #e6f2ff, #f0f7ff);
             border-left: 4px solid var(--primary-blue);
@@ -582,7 +621,7 @@
             color: var(--primary-blue);
         }
         
-        /* Demo Notice - FIX 3 */
+        /* Demo Notice */
         .demo-notice {
             background: #fff9e6;
             border: 1px solid #ffcc00;
@@ -1030,12 +1069,20 @@
             font-size: 1.1rem;
         }
         
-        /* Footer Trust Line - FIX 5 */
+        /* FIX 5: Footer Trust Tweak */
         .footer-trust-line {
             color: rgba(255, 255, 255, 0.9);
             font-style: italic;
             margin: 1.5rem 0;
             font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+        
+        .footer-trust-line-niche {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 1rem 0 1.5rem;
+            font-size: 1rem;
             max-width: 600px;
             line-height: 1.5;
         }
@@ -1135,6 +1182,16 @@
             .hero .btn {
                 width: 100%;
                 max-width: 300px;
+            }
+            
+            .flow-strip {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
             }
             
             .hero-stats {
@@ -1264,8 +1321,8 @@
         <div class="container hero-container">
             <div class="hero-content">
                 <!-- FIX 1: Updated Hero Copy -->
-                <h1>Missed Plumbing Calls Turn Into Booked Jobs Automatically</h1>
-                <p>When customers call and you can't answer, they instantly receive a text message with this booking link.</p>
+                <h1>Missed Plumbing Calls Automatically Turn Into Booked Jobs</h1>
+                <p>When customers call after hours or you miss a call, they instantly receive a text message with this booking link.</p>
                 
                 <div class="hero-buttons">
                     <a href="tel:+15551234567" class="btn btn-primary btn-large">
@@ -1274,6 +1331,28 @@
                     <a href="#booking" class="btn btn-secondary btn-large">
                         <i class="fas fa-calendar"></i> Book Appointment
                     </a>
+                </div>
+                
+                <!-- FIX 2: Visual Flow Strip -->
+                <div class="flow-strip">
+                    <div class="flow-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Missed Call</span>
+                    </div>
+                    <div class="flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="flow-item">
+                        <i class="fas fa-sms"></i>
+                        <span>Auto Text Sent</span>
+                    </div>
+                    <div class="flow-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="flow-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Job Booked</span>
+                    </div>
                 </div>
                 
                 <div class="hero-stats">
@@ -1421,7 +1500,11 @@
     <!-- Enhanced Booking Section with Calendar UI -->
     <section id="booking" class="booking-section">
         <div class="container">
-            <!-- FIX 2: Added "How They Get Here" Info Bar -->
+            <!-- FIX 3: Booking Section Micro-Copy -->
+            <div class="booking-micro-copy">
+                <strong>This is the exact booking page customers receive automatically by SMS if their call is missed.</strong>
+            </div>
+            
             <div class="booking-info-bar">
                 <i class="fas fa-sms"></i>
                 <span>Customers receive this booking link automatically if their call is missed or they enquire through your website.</span>
@@ -1479,7 +1562,7 @@
                             <!-- Time slots will be generated by JavaScript -->
                         </div>
                         
-                        <!-- FIX 3: Added Demo Notice -->
+                        <!-- Demo Notice -->
                         <div class="demo-notice">
                             <i class="fas fa-exclamation-triangle"></i>
                             <div>
@@ -1572,10 +1655,10 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Want This System for Your Plumbing Business?</h2>
-            <p>Stop losing missed calls and start converting them into booked jobs automatically. Join hundreds of plumbers who are already using our system.</p>
+            <!-- FIX 4: Updated CTA Section -->
+            <h2>Want This Working Behind Your Plumbing Business?</h2>
+            <p>No website rebuild. No contracts. Setup done for you.</p>
             
-            <!-- FIX 4: Updated CTA Button Text -->
             <a href="https://wa.me/15551234567?text=Hi%2C%20I%20want%20this%20automated%20booking%20%26%20missed-call%20system%20for%20my%20plumbing%20business." target="_blank" class="btn btn-whatsapp btn-large">
                 <i class="fab fa-whatsapp"></i> Get This System for My Plumbing Business
             </a>
@@ -1598,9 +1681,13 @@
                 </div>
             </div>
             
-            <!-- FIX 5: Added Footer Trust Line -->
+            <!-- FIX 5: Footer Trust Tweak -->
             <div class="footer-trust-line">
                 Used by service businesses to capture missed calls and after-hours enquiries.
+            </div>
+            
+            <div class="footer-trust-line-niche">
+                Designed for service businesses that rely on phone calls.
             </div>
             
             <div class="footer-disclaimer">
